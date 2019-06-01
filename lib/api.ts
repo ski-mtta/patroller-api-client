@@ -2,7 +2,7 @@
 /// <reference path="./custom.d.ts" />
 /**
  * MTTA Ski Patrol Web Services API
- *          Web Services for Mt. Tahoma Trails Association Ski Patrol, supporting the following features:              - Manage Ski Patroller Information;             - Ski Patroller Login;             - Schedule Ski Patrol Duty Dates;             - Automatically approve and fill out time sheets;             - Sign in/out for Ski Patrol duty;             - Broadcast and Post Direct Messages to Ski Patrollers;             - (Future) Real-Time GPS Tracking of Patrollers;             - Other features to be added... suggestions wanted! :)              
+ *          Web Services for Mt. Tahoma Trails Association Ski Patrol, supporting the following features:              - Manage Ski Patroller Information;             - Ski Patroller Login;             - Schedule Ski Patrol Duty Dates;             - Automatically approve and fill out time sheets;             - Sign in/out for Ski Patrol duty;             - Broadcast and Post Direct Messages to Ski Patrollers;             - (Future) Real-Time GPS Tracking of Patrollers;             - Other features to be added... suggestions wanted! :)
  *
  * OpenAPI spec version: 0.1.0
  * Contact: Ryan.Michael.Tate@gmail.com
@@ -12,14 +12,19 @@
  * Do not edit the class manually.
  */
 
-
-import * as url from 'url';
-import { Configuration } from './configuration';
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
+import * as url from 'url'
+import { Configuration } from './configuration'
+import globalAxios, { AxiosPromise, AxiosInstance } from 'axios'
+import {
+    BASE_PATH,
+    COLLECTION_FORMATS,
+    RequestArgs,
+    BaseAPI,
+    RequiredError,
+} from './base'
 
 /**
- * 
+ *
  * @export
  * @interface AuthenticationPostRequest
  */
@@ -29,17 +34,17 @@ export interface AuthenticationPostRequest {
      * @type {number}
      * @memberof AuthenticationPostRequest
      */
-    spNumber: number;
+    spNumber: number
     /**
      * Personal password
      * @type {string}
      * @memberof AuthenticationPostRequest
      */
-    password: string;
+    password: string
 }
 
 /**
- * 
+ *
  * @export
  * @interface AuthenticationPostResponse
  */
@@ -49,11 +54,11 @@ export interface AuthenticationPostResponse {
      * @type {string}
      * @memberof AuthenticationPostResponse
      */
-    accessToken: string;
+    accessToken: string
 }
 
 /**
- * 
+ *
  * @export
  * @interface PatrollersPostRequest
  */
@@ -63,47 +68,47 @@ export interface PatrollersPostRequest {
      * @type {string}
      * @memberof PatrollersPostRequest
      */
-    firstName: string;
+    firstName: string
     /**
      * Last Name of the Ski Patroller
      * @type {string}
      * @memberof PatrollersPostRequest
      */
-    lastName: string;
+    lastName: string
     /**
      * Ski Patrol Number
      * @type {number}
      * @memberof PatrollersPostRequest
      */
-    spNumber: number;
+    spNumber: number
     /**
      * Personal password
      * @type {string}
      * @memberof PatrollersPostRequest
      */
-    password: string;
+    password: string
     /**
      * Email address
      * @type {string}
      * @memberof PatrollersPostRequest
      */
-    email: string;
+    email: string
     /**
      * Phone number
      * @type {string}
      * @memberof PatrollersPostRequest
      */
-    phoneNumber: string;
+    phoneNumber: string
     /**
-     * 
+     *
      * @type {PhysicalAddress}
      * @memberof PatrollersPostRequest
      */
-    physicalAddress: PhysicalAddress;
+    physicalAddress: PhysicalAddress
 }
 
 /**
- * 
+ *
  * @export
  * @interface PatrollersPostResponse
  */
@@ -113,43 +118,43 @@ export interface PatrollersPostResponse {
      * @type {string}
      * @memberof PatrollersPostResponse
      */
-    patrollerId: string;
+    patrollerId: string
     /**
      * First Name of the Ski Patroller
      * @type {string}
      * @memberof PatrollersPostResponse
      */
-    firstName: string;
+    firstName: string
     /**
      * Last Name of the Ski Patroller
      * @type {string}
      * @memberof PatrollersPostResponse
      */
-    lastName: string;
+    lastName: string
     /**
      * Ski Patrol Number
      * @type {number}
      * @memberof PatrollersPostResponse
      */
-    spNumber: number;
+    spNumber: number
     /**
      * Email address
      * @type {string}
      * @memberof PatrollersPostResponse
      */
-    email: string;
+    email: string
     /**
      * Phone number
      * @type {string}
      * @memberof PatrollersPostResponse
      */
-    phoneNumber: string;
+    phoneNumber: string
     /**
-     * 
+     *
      * @type {PhysicalAddress}
      * @memberof PatrollersPostResponse
      */
-    physicalAddress: PhysicalAddress;
+    physicalAddress: PhysicalAddress
 }
 
 /**
@@ -163,33 +168,34 @@ export interface PhysicalAddress {
      * @type {string}
      * @memberof PhysicalAddress
      */
-    streetAddress: string;
+    streetAddress: string
     /**
      * The city for the physical address.
      * @type {string}
      * @memberof PhysicalAddress
      */
-    city: string;
+    city: string
     /**
      * The state for the physical address
      * @type {string}
      * @memberof PhysicalAddress
      */
-    state: string;
+    state: string
     /**
      * The zip code for the physical address
      * @type {string}
      * @memberof PhysicalAddress
      */
-    zipCode: string;
+    zipCode: string
 }
-
 
 /**
  * AuthenticationApi - axios parameter creator
  * @export
  */
-export const AuthenticationApiAxiosParamCreator = function (configuration?: Configuration) {
+export const AuthenticationApiAxiosParamCreator = function(
+    configuration?: Configuration,
+) {
     return {
         /**
          * Create JWT using Ski Patrol Number and Password Credentials
@@ -198,38 +204,66 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAuthToken(authenticationPostRequest: AuthenticationPostRequest, options: any = {}): RequestArgs {
+        createAuthToken(
+            authenticationPostRequest: AuthenticationPostRequest,
+            options: any = {},
+        ): RequestArgs {
             // verify required parameter 'authenticationPostRequest' is not null or undefined
-            if (authenticationPostRequest === null || authenticationPostRequest === undefined) {
-                throw new RequiredError('authenticationPostRequest','Required parameter authenticationPostRequest was null or undefined when calling createAuthToken.');
+            if (
+                authenticationPostRequest === null ||
+                authenticationPostRequest === undefined
+            ) {
+                throw new RequiredError(
+                    'authenticationPostRequest',
+                    'Required parameter authenticationPostRequest was null or undefined when calling createAuthToken.',
+                )
             }
-            const localVarPath = `/authentication`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
+            const localVarPath = `/authentication`
+            const localVarUrlObj = url.parse(localVarPath, true)
+            let baseOptions
             if (configuration) {
-                baseOptions = configuration.baseOptions;
+                baseOptions = configuration.baseOptions
             }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+            const localVarRequestOptions = {
+                method: 'POST',
+                ...baseOptions,
+                ...options,
+            }
+            const localVarHeaderParameter = {} as any
+            const localVarQueryParameter = {} as any
 
+            localVarHeaderParameter['Content-Type'] = 'application/json'
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            localVarUrlObj.query = {
+                ...localVarUrlObj.query,
+                ...localVarQueryParameter,
+                ...options.query,
+            }
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"AuthenticationPostRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(authenticationPostRequest !== undefined ? authenticationPostRequest : {}) : (authenticationPostRequest || "");
+            delete localVarUrlObj.search
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...options.headers,
+            }
+            const needsSerialization =
+                <any>'AuthenticationPostRequest' !== 'string' ||
+                localVarRequestOptions.headers['Content-Type'] ===
+                    'application/json'
+            localVarRequestOptions.data = needsSerialization
+                ? JSON.stringify(
+                      authenticationPostRequest !== undefined
+                          ? authenticationPostRequest
+                          : {},
+                  )
+                : authenticationPostRequest || ''
 
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
-            };
+            }
         },
     }
-};
+}
 
 /**
  * AuthenticationApi - functional programming interface
@@ -244,21 +278,39 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAuthToken(authenticationPostRequest: AuthenticationPostRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationPostResponse> {
-            const localVarAxiosArgs = AuthenticationApiAxiosParamCreator(configuration).createAuthToken(authenticationPostRequest, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+        createAuthToken(
+            authenticationPostRequest: AuthenticationPostRequest,
+            options?: any,
+        ): (
+            axios?: AxiosInstance,
+            basePath?: string,
+        ) => AxiosPromise<AuthenticationPostResponse> {
+            const localVarAxiosArgs = AuthenticationApiAxiosParamCreator(
+                configuration,
+            ).createAuthToken(authenticationPostRequest, options)
+            return (
+                axios: AxiosInstance = globalAxios,
+                basePath: string = BASE_PATH,
+            ) => {
+                const axiosRequestArgs = {
+                    ...localVarAxiosArgs.options,
+                    url: basePath + localVarAxiosArgs.url,
+                }
+                return axios.request(axiosRequestArgs)
+            }
         },
     }
-};
+}
 
 /**
  * AuthenticationApi - factory interface
  * @export
  */
-export const AuthenticationApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+export const AuthenticationApiFactory = function(
+    configuration?: Configuration,
+    basePath?: string,
+    axios?: AxiosInstance,
+) {
     return {
         /**
          * Create JWT using Ski Patrol Number and Password Credentials
@@ -267,11 +319,17 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAuthToken(authenticationPostRequest: AuthenticationPostRequest, options?: any) {
-            return AuthenticationApiFp(configuration).createAuthToken(authenticationPostRequest, options)(axios, basePath);
+        createAuthToken(
+            authenticationPostRequest: AuthenticationPostRequest,
+            options?: any,
+        ) {
+            return AuthenticationApiFp(configuration).createAuthToken(
+                authenticationPostRequest,
+                options,
+            )(axios, basePath)
         },
-    };
-};
+    }
+}
 
 /**
  * AuthenticationApi - object-oriented interface
@@ -288,18 +346,24 @@ export class AuthenticationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthenticationApi
      */
-    public createAuthToken(authenticationPostRequest: AuthenticationPostRequest, options?: any) {
-        return AuthenticationApiFp(this.configuration).createAuthToken(authenticationPostRequest, options)(this.axios, this.basePath);
+    public createAuthToken(
+        authenticationPostRequest: AuthenticationPostRequest,
+        options?: any,
+    ) {
+        return AuthenticationApiFp(this.configuration).createAuthToken(
+            authenticationPostRequest,
+            options,
+        )(this.axios, this.basePath)
     }
-
 }
-
 
 /**
  * PatrollersApi - axios parameter creator
  * @export
  */
-export const PatrollersApiAxiosParamCreator = function (configuration?: Configuration) {
+export const PatrollersApiAxiosParamCreator = function(
+    configuration?: Configuration,
+) {
     return {
         /**
          * Create a new patroller
@@ -308,38 +372,66 @@ export const PatrollersApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPatroller(patrollersPostRequest: PatrollersPostRequest, options: any = {}): RequestArgs {
+        createPatroller(
+            patrollersPostRequest: PatrollersPostRequest,
+            options: any = {},
+        ): RequestArgs {
             // verify required parameter 'patrollersPostRequest' is not null or undefined
-            if (patrollersPostRequest === null || patrollersPostRequest === undefined) {
-                throw new RequiredError('patrollersPostRequest','Required parameter patrollersPostRequest was null or undefined when calling createPatroller.');
+            if (
+                patrollersPostRequest === null ||
+                patrollersPostRequest === undefined
+            ) {
+                throw new RequiredError(
+                    'patrollersPostRequest',
+                    'Required parameter patrollersPostRequest was null or undefined when calling createPatroller.',
+                )
             }
-            const localVarPath = `/patrollers`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            let baseOptions;
+            const localVarPath = `/patrollers`
+            const localVarUrlObj = url.parse(localVarPath, true)
+            let baseOptions
             if (configuration) {
-                baseOptions = configuration.baseOptions;
+                baseOptions = configuration.baseOptions
             }
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
+            const localVarRequestOptions = {
+                method: 'POST',
+                ...baseOptions,
+                ...options,
+            }
+            const localVarHeaderParameter = {} as any
+            const localVarQueryParameter = {} as any
 
+            localVarHeaderParameter['Content-Type'] = 'application/json'
 
-                localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
+            localVarUrlObj.query = {
+                ...localVarUrlObj.query,
+                ...localVarQueryParameter,
+                ...options.query,
+            }
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...options.headers};
-            const needsSerialization = (<any>"PatrollersPostRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(patrollersPostRequest !== undefined ? patrollersPostRequest : {}) : (patrollersPostRequest || "");
+            delete localVarUrlObj.search
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...options.headers,
+            }
+            const needsSerialization =
+                <any>'PatrollersPostRequest' !== 'string' ||
+                localVarRequestOptions.headers['Content-Type'] ===
+                    'application/json'
+            localVarRequestOptions.data = needsSerialization
+                ? JSON.stringify(
+                      patrollersPostRequest !== undefined
+                          ? patrollersPostRequest
+                          : {},
+                  )
+                : patrollersPostRequest || ''
 
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
-            };
+            }
         },
     }
-};
+}
 
 /**
  * PatrollersApi - functional programming interface
@@ -354,21 +446,39 @@ export const PatrollersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPatroller(patrollersPostRequest: PatrollersPostRequest, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PatrollersPostResponse> {
-            const localVarAxiosArgs = PatrollersApiAxiosParamCreator(configuration).createPatroller(patrollersPostRequest, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
+        createPatroller(
+            patrollersPostRequest: PatrollersPostRequest,
+            options?: any,
+        ): (
+            axios?: AxiosInstance,
+            basePath?: string,
+        ) => AxiosPromise<PatrollersPostResponse> {
+            const localVarAxiosArgs = PatrollersApiAxiosParamCreator(
+                configuration,
+            ).createPatroller(patrollersPostRequest, options)
+            return (
+                axios: AxiosInstance = globalAxios,
+                basePath: string = BASE_PATH,
+            ) => {
+                const axiosRequestArgs = {
+                    ...localVarAxiosArgs.options,
+                    url: basePath + localVarAxiosArgs.url,
+                }
+                return axios.request(axiosRequestArgs)
+            }
         },
     }
-};
+}
 
 /**
  * PatrollersApi - factory interface
  * @export
  */
-export const PatrollersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+export const PatrollersApiFactory = function(
+    configuration?: Configuration,
+    basePath?: string,
+    axios?: AxiosInstance,
+) {
     return {
         /**
          * Create a new patroller
@@ -377,11 +487,17 @@ export const PatrollersApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createPatroller(patrollersPostRequest: PatrollersPostRequest, options?: any) {
-            return PatrollersApiFp(configuration).createPatroller(patrollersPostRequest, options)(axios, basePath);
+        createPatroller(
+            patrollersPostRequest: PatrollersPostRequest,
+            options?: any,
+        ) {
+            return PatrollersApiFp(configuration).createPatroller(
+                patrollersPostRequest,
+                options,
+            )(axios, basePath)
         },
-    };
-};
+    }
+}
 
 /**
  * PatrollersApi - object-oriented interface
@@ -398,10 +514,13 @@ export class PatrollersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PatrollersApi
      */
-    public createPatroller(patrollersPostRequest: PatrollersPostRequest, options?: any) {
-        return PatrollersApiFp(this.configuration).createPatroller(patrollersPostRequest, options)(this.axios, this.basePath);
+    public createPatroller(
+        patrollersPostRequest: PatrollersPostRequest,
+        options?: any,
+    ) {
+        return PatrollersApiFp(this.configuration).createPatroller(
+            patrollersPostRequest,
+            options,
+        )(this.axios, this.basePath)
     }
-
 }
-
-

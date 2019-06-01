@@ -1,7 +1,7 @@
 // tslint:disable
 /**
  * MTTA Ski Patrol Web Services API
- *          Web Services for Mt. Tahoma Trails Association Ski Patrol, supporting the following features:              - Manage Ski Patroller Information;             - Ski Patroller Login;             - Schedule Ski Patrol Duty Dates;             - Automatically approve and fill out time sheets;             - Sign in/out for Ski Patrol duty;             - Broadcast and Post Direct Messages to Ski Patrollers;             - (Future) Real-Time GPS Tracking of Patrollers;             - Other features to be added... suggestions wanted! :)              
+ *          Web Services for Mt. Tahoma Trails Association Ski Patrol, supporting the following features:              - Manage Ski Patroller Information;             - Ski Patroller Login;             - Schedule Ski Patrol Duty Dates;             - Automatically approve and fill out time sheets;             - Sign in/out for Ski Patrol duty;             - Broadcast and Post Direct Messages to Ski Patrollers;             - (Future) Real-Time GPS Tracking of Patrollers;             - Other features to be added... suggestions wanted! :)
  *
  * OpenAPI spec version: 0.1.0
  * Contact: Ryan.Michael.Tate@gmail.com
@@ -11,14 +11,13 @@
  * Do not edit the class manually.
  */
 
-
 export interface ConfigurationParameters {
-    apiKey?: string | ((name: string) => string);
-    username?: string;
-    password?: string;
-    accessToken?: string | ((name: string, scopes?: string[]) => string);
-    basePath?: string;
-    baseOptions?: any;
+    apiKey?: string | ((name: string) => string)
+    username?: string
+    password?: string
+    accessToken?: string | ((name: string, scopes?: string[]) => string)
+    basePath?: string
+    baseOptions?: any
 }
 
 export class Configuration {
@@ -27,48 +26,48 @@ export class Configuration {
      * @param name security name
      * @memberof Configuration
      */
-    apiKey?: string | ((name: string) => string);
+    apiKey?: string | ((name: string) => string)
     /**
      * parameter for basic security
-     * 
+     *
      * @type {string}
      * @memberof Configuration
      */
-    username?: string;
+    username?: string
     /**
      * parameter for basic security
-     * 
+     *
      * @type {string}
      * @memberof Configuration
      */
-    password?: string;
+    password?: string
     /**
      * parameter for oauth2 security
      * @param name security name
      * @param scopes oauth2 scope
      * @memberof Configuration
      */
-    accessToken?: string | ((name: string, scopes?: string[]) => string);
+    accessToken?: string | ((name: string, scopes?: string[]) => string)
     /**
      * override base path
-     * 
+     *
      * @type {string}
      * @memberof Configuration
      */
-    basePath?: string;
+    basePath?: string
     /**
      * base options for axios calls
      *
      * @type {any}
      * @memberof Configuration
      */
-    baseOptions?: any;
+    baseOptions?: any
 
     constructor(param: ConfigurationParameters = {}) {
-        this.apiKey = param.apiKey;
-        this.username = param.username;
-        this.password = param.password;
-        this.accessToken = param.accessToken;
-        this.basePath = param.basePath;
+        this.apiKey = param.apiKey
+        this.username = param.username
+        this.password = param.password
+        this.accessToken = param.accessToken
+        this.basePath = param.basePath
     }
 }

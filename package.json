@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "API Client for MTTA Patroller APIs",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./custom.d.ts",
   "files": [
       "dist",
       "lib"

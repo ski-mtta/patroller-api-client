@@ -4,8 +4,8 @@
   "description": "API Client for MTTA Patroller APIs",
   "main": "./dist/index.js",
   "scripts": {
-    "prepare": "npx tsc",
-    "build": "npx tsc",
+    "prepare": "npm run build",
+    "build": "rm -rf ./dist && npx tsc",
     "format:check": "npx prettier -l './lib/**/*.{tsx,ts}'",
     "format:update": "npx prettier --write './lib/**/*.{tsx,ts}'"
   },

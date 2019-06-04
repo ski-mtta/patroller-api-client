@@ -5,11 +5,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-      "dist",
-      "lib"
+    "dist",
+    "lib"
   ],
   "scripts": {
     "prepare": "npm run build",
+    "gen:spec": "cd ./node_modules/skimtta-oas && npm run gen:spec",
+    "gen:client": "npx openapi-generator generate -i ./node_modules/skimtta-oas/dist/openapi.json -g typescript-axios -o ./lib",
     "build": "rm -rf ./dist && npx tsc",
     "format:check": "npx prettier -l './lib/**/*.{tsx,ts}'",
     "format:update": "npx prettier --write './lib/**/*.{tsx,ts}'"
@@ -17,10 +19,13 @@
   "author": "Ryan Tate <ryan.michael.tate@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^12.0.4",
     "axios": "^0.19.0"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "0.0.11-4.0.0-beta3",
     "prettier": "^1.17.1",
+    "skimtta-oas": "github:ski-mtta/openapi-specification",
     "typescript": "^3.5.1"
   }
 }
